@@ -16,7 +16,7 @@ export const CartPage = () => {
   const setData = () => {
     axios.get("https://morning-scrubland-78864.herokuapp.com/addtocart").then((res) => {
       setProduct(res.data);
-      //  console.log(allprod);
+        console.log([res.data.length]);
     });
   };
 

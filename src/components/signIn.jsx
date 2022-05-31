@@ -31,7 +31,7 @@ export const SignIn = () => {
         console.log(res);
         if (res.status === 200) {
           alert("login sucesfully");
-          
+          navigate("/")
         } else if (res.status === 500) {
           alert("Email or password is wrong");
           return;

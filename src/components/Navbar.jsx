@@ -2,6 +2,8 @@ import "../styles/Navbar.css";
 import {Link} from 'react-router-dom'
 import {CartPage} from '../components/CartPage'
 
+let cart=JSON.parse(localStorage.getItem("counter"))
+//console.log([... new set(cart.length)])
 export const Navbar = () => {
     return (
         <div id="nav">
@@ -79,7 +81,7 @@ export const Navbar = () => {
                             </div>
                             <div className="dropdown" id="sign-box">
                                 <p>Welcome to Gearbest</p>
-                                <button id="yellow-btn">Sign In</button>
+                                <Link to={"/auth"}><button id="yellow-btn">Sign In</button></Link>
                                 <div id="google">
                                     <div style={{color: "grey"}}>or connect via</div>
                                     <img src="https://freepngimg.com/download/google/66903-google-pay-gboard-platform-logo-cloud.png" alt="" />
@@ -102,6 +104,7 @@ export const Navbar = () => {
                                 <img style={{width: "19px", height: "19px"}} src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="" />
                                 <Link to={'/productDetails/cart/:id'} style={{textDecoration: "none", color: "black"}}>
                                 <div>Cart</div>
+                                <span>{cart}</span>
                                 </Link>
                             </div>
                             {/* <div className="dropdown">

@@ -13,7 +13,8 @@ import { useDispatch } from "react-redux"
 
 export const ProductDetail = () => {
   const [product,setProduct] = useState([])
-    
+  //const [count,setCount]=useState(0);  
+  //localStorage.setItem("count",JSON.stringify(count))
    const dispatch = useDispatch()
   let {id} = useParams()
  
@@ -33,6 +34,9 @@ export const ProductDetail = () => {
     body:JSON.stringify(product)
   })
   //console.log(product)
+  //setCount(()=>{
+  //  count+=1
+  //})
    localStorage.setItem('addtocart',JSON.stringify(product))
    dispatch(addItemsToCart(product))
   }
@@ -71,7 +75,7 @@ export const ProductDetail = () => {
                  <p className="product">Shipping : </p>
                  <p>FREE SHIPPING to United States Via Priority Line </p>
                   </div>
-                  <p>Ship between: May 09 - May 13, Estimated Shipping Time: 7-30 business days 
+                  <p>Ship between: May 20 - May 31, Estimated Shipping Time: 7-30 business days 
                   </p>
                   <div className="color">
                    <p className="product"> Color : </p>
@@ -98,9 +102,9 @@ export const ProductDetail = () => {
             <Icons />
             </div>
           <div className="cartbtn">
-            <Link id="linkbutton" to={`/productDetails/cart/${product._id}`}>
+            {/*<Link id="linkbutton" to={`/productDetails/cart/${product._id}`}>*/}
           <button className="linkbtn"  onClick={setData}>Add To Cart</button>
-          </Link>
+          {/*</Link>*/}
           <Link id="linkbutton" to={`/shipping`}>
           <button className="linkbtn" onClick={setOrder}>Buy Now</button>
            </Link>

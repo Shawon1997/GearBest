@@ -6,7 +6,8 @@ import '../styles/ProductDetails.css'
 
 
 export const Counter= ()=> {
-     
+  localStorage.setItem("count",JSON.stringify(count))
+  const [count,setCount]=useState(0);   
 const dispatch = useDispatch();
 const counter = useSelector((store) => 
  store.counter.counter

@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-    {/* <Route path="/auth" element={<SignInPage/>}></Route> */}
+    <Route path="/auth" element={<SignInPage/>}></Route>
     <Route path="" element={<LandingPage />}></Route>
     </Routes>
    <AllRoutes/>
