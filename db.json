@@ -976,10 +976,19 @@
       "title": "ENGWE Bike C20 PRO Adult Electric Bike 36V19.2AH City Bike 250W BaFang Motor 25KM/H electric Bicycle 20 3.0 inch - Light Grey United States",
       "price": 1999
     }
-
   ],
   "addAddress": [
-   
+    {
+      "First_Name": "Shawon",
+      "Last_Name": "Biswas",
+      "Address": "Krishnaganj ,Brance-code:3696,  P.O-Krishnaganj , P.O-krishnaganj,Nadia,West-Bengal",
+      "City": "kalyani,kolkata",
+      "State": "WB",
+      "Country": "IN",
+      "PinCode": "741502",
+      "PhoneNo": "09123665757",
+      "Email": "16haw87@gmail.com",
+      "id": 1
+    }
   ]
 }
-
