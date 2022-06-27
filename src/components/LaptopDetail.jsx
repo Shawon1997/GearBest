@@ -13,13 +13,13 @@ import { addItemsToCart } from "../Redux/Cart/cartaction"
 
 
 export const LaptopDetail = () => {
-  const [product,setProduct] = useState([])
+  const [product,setProduct] = useState(null)
   const dispatch = useDispatch()
     let {id} = useParams()
  
     useEffect(() => {
-      axios.get(`https://morning-scrubland-78864.herokuapp.com/laptop/${id}`).then(({data})=>{
-          setProduct(data)
+      axios.get(`https://morning-scrubland-78864.herokuapp.com/laptop/${id}`).then((res)=>{
+          setProduct(res.data)
   })
   },[])
 console.log(product)
@@ -50,10 +50,10 @@ console.log(product)
       <div className="product_details">
           <div className="flex_container">
               <div className="flex_image">
-                 <img className="product_image" src={product.imgUrl}/>
+                 <img className="product_image" src={product?.imgUrl}/>
               </div>
               <div className="about_product">
-                 <h3 className="product_name">{product.title}</h3>
+                 <h3 className="product_name">{product?.title}</h3>
                 <div className="flash_sale">
                   <div>
                   <h1>FLASH SALE</h1>
@@ -62,7 +62,7 @@ console.log(product)
                 </div>
                 <span>
                   <p className="product">Price  : </p>
-                  <h2 className="product_price"> ${product.price}</h2>
+                  <h2 className="product_price"> ${product?.price}</h2>
                   <p> $ {(product.price*1.2).toFixed(2)} </p>
                 </span>
                 <div className="shipping">
@@ -96,7 +96,7 @@ console.log(product)
             <Icons />
             </div>
           <div className="cartbtn">
-            <Link id="linkbutton" to={`/productDetails/cart/${product._id}`}>
+            <Link id="linkbutton" to={`/productDetails/cart/${product?._id}`}>
           <button className="linkbtn" onClick={setData}>Add To Cart</button>
           </Link>
           <Link id="linkbutton" to={`/shipping`}>

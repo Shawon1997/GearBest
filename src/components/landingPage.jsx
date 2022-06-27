@@ -76,7 +76,7 @@ export const LandingPage = () => {
 
             {superDeals.map((e, i) => (
               <div id="collDiv">
-              <Link to="/catagorys" >
+              <Link to="/mobile" >
                 <img src={e.imgUrl} />
                 </Link>
                 <p className="titleP" id='tppp'>{e.title}</p>
@@ -93,7 +93,7 @@ export const LandingPage = () => {
         {allprod.map((e) => (
 
           <div className="categoryDiv">
-            <Link to={`/product/${e._id}`}>
+            <Link to={`/product`}>
               <img src={e.imgUrl} />
             </Link>
             <p className="titleP">{e.title}</p>

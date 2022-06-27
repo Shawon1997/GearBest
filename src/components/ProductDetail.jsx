@@ -1,30 +1,27 @@
+
+
 import axios from "axios"
 import { useParams } from "react-router-dom"
 import {useState ,useEffect} from 'react'
 import '../styles/ProductDetails.css'
-import {Counter} from '../components/Counter'
-import {Icons} from '../components/Icons'
+import {Counter} from './Counter'
+import {Icons} from './Icons'
 import {Link} from 'react-router-dom'
-import { addItemsToCart } from "../Redux/Cart/cartaction"
-import { useDispatch } from "react-redux"
-
-
- 
+import {useDispatch} from 'react-redux'
+import {addItemsToCart} from "../Redux/Cart/cartaction"
 
 export const ProductDetail = () => {
-  const [product,setProduct] = useState([])
-  //const [count,setCount]=useState(0);  
-  //localStorage.setItem("count",JSON.stringify(count))
-   const dispatch = useDispatch()
-  let {id} = useParams()
+  const [product,setProduct] = useState(null)
+  //const [product,setProduct] = useState(null)
+  const dispatch = useDispatch()
+    let {id} = useParams()
  
     useEffect(() => {
-      axios.get(`https://morning-scrubland-78864.herokuapp.com/all/${id}`).then(({data})=>{
-          setProduct(data)
-          
+      axios.get(`https://morning-scrubland-78864.herokuapp.com/all/${id}`).then((res)=>{
+          setProduct(res.data)
   })
   },[])
-  console.log(product)
+console.log(product)
   const setData=()=>{
     fetch(`https://morning-scrubland-78864.herokuapp.com/addtocart`,{
     method:'POST',
@@ -33,10 +30,7 @@ export const ProductDetail = () => {
     },
     body:JSON.stringify(product)
   })
-  //console.log(product)
-  //setCount(()=>{
-  //  count+=1
-  //})
+  alert("Add to cart successful")
    localStorage.setItem('addtocart',JSON.stringify(product))
    dispatch(addItemsToCart(product))
   }
@@ -56,10 +50,10 @@ export const ProductDetail = () => {
       <div className="product_details">
           <div className="flex_container">
               <div className="flex_image">
-                 <img className="product_image" src={product.imgUrl}/>
+                 <img className="product_image" src={product?.imgUrl}/>
               </div>
               <div className="about_product">
-                 <h3 className="product_name">{product.title}</h3>
+                 <h3 className="product_name">{product?.title}</h3>
                 <div className="flash_sale">
                   <div>
                   <h1>FLASH SALE</h1>
@@ -68,14 +62,14 @@ export const ProductDetail = () => {
                 </div>
                 <span>
                   <p className="product">Price  : </p>
-                  <h2 className="product_price"> ${product.price}</h2>
-                  <p> $ {(product.price*1.2).toFixed(2)} </p>
+                  <h2 className="product_price"> ${product?.price}</h2>
+                  <p> $ {(product?.price*1.2).toFixed(2)} </p>
                 </span>
                 <div className="shipping">
                  <p className="product">Shipping : </p>
                  <p>FREE SHIPPING to United States Via Priority Line </p>
                   </div>
-                  <p>Ship between: May 20 - May 31, Estimated Shipping Time: 7-30 business days 
+                  <p>Ship between: May 09 - May 13, Estimated Shipping Time: 7-30 business days 
                   </p>
                   <div className="color">
                    <p className="product"> Color : </p>
@@ -85,9 +79,7 @@ export const ProductDetail = () => {
                   </div>
                   <div className="qty">
                   <p className="product">QTY : </p>
-                  <div>
-                 <Counter />
-                  </div>
+                  
                   <p>in stock</p>
                   </div>
 
@@ -102,12 +94,12 @@ export const ProductDetail = () => {
             <Icons />
             </div>
           <div className="cartbtn">
-            {/*<Link id="linkbutton" to={`/productDetails/cart/${product._id}`}>*/}
-          <button className="linkbtn"  onClick={setData}>Add To Cart</button>
-          {/*</Link>*/}
+           
+          <button className="linkbtn" onClick={setData}>Add To Cart</button>
+         
           <Link id="linkbutton" to={`/shipping`}>
           <button className="linkbtn" onClick={setOrder}>Buy Now</button>
-           </Link>
+          </Link>
            <button>PayPal</button>
            </div>
            </div>

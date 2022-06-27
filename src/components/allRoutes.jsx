@@ -28,7 +28,7 @@ export const AllRoutes=()=>{
         
         
 
-
+{/*
 <Routes>
         
         <Route path="/catagorys" element={<Category />}></Route>
@@ -45,7 +45,7 @@ export const AllRoutes=()=>{
         <Route path="/order" element={<Confirm/>}></Route>
         <Route path="/payment" element={<Payment/>}></Route>
 
-      </Routes>
+      </Routes>*/}
      <Footer></Footer>
         
         </div>

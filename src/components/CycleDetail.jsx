@@ -4,7 +4,7 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 import {useState ,useEffect} from 'react'
 import '../styles/ProductDetails.css'
-import {Counter} from './Counter'
+//import {Counter} from './Counter'
 import {Icons} from './Icons'
 import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
@@ -12,16 +12,17 @@ import { addItemsToCart } from "../Redux/Cart/cartaction"
  
 
 export const CycleDetail = () => {
-  const [product,setProduct] = useState([])
+  const [product,setProduct] = useState(null)
   const dispatch = useDispatch()
     let {id} = useParams()
+    console.log(id)
  
     useEffect(() => {
-      axios.get(`https://morning-scrubland-78864.herokuapp.com/outdoor/${id}`).then(({data})=>{
-          setProduct(data)
+      axios.get(`https://morning-scrubland-78864.herokuapp.com/outdoor/${id}`).then((res)=>{
+          setProduct(res.data)
   })
   },[])
-console.log(product)
+//console.log(product)
   const setData=()=>{
     fetch(`https://morning-scrubland-78864.herokuapp.com/addtocart`,{
     method:'POST',
@@ -48,10 +49,10 @@ console.log(product)
       <div className="product_details">
           <div className="flex_container">
               <div className="flex_image">
-                 <img className="product_image" src={product.imgUrl}/>
+                 <img className="product_image" src={product?.imgUrl}/>
               </div>
               <div className="about_product">
-                 <h3 className="product_name">{product.title}</h3>
+                 <h3 className="product_name">{product?.title}</h3>
                 <div className="flash_sale">
                   <div>
                   <h1>FLASH SALE</h1>
@@ -60,8 +61,8 @@ console.log(product)
                 </div>
                 <span>
                   <p className="product">Price  : </p>
-                  <h2 className="product_price"> ${product.price}</h2>
-                  <p> $ {(product.price*1.2).toFixed(2)} </p>
+                  <h2 className="product_price"> ${product?.price}</h2>
+                  <p> $ {(product?.price*1.2).toFixed(2)} </p>
                 </span>
                 <div className="shipping">
                  <p className="product">Shipping : </p>
@@ -78,7 +79,7 @@ console.log(product)
                   <div className="qty">
                   <p className="product">QTY : </p>
                   <div>
-                 <Counter />
+                 {/*<Counter />*/}
                   </div>
                   <p>in stock</p>
                   </div>
@@ -94,7 +95,7 @@ console.log(product)
             <Icons />
             </div>
           <div className="cartbtn">
-            <Link id="linkbutton" to={`/productDetails/cart/${product._id}`}>
+            <Link id="linkbutton" to={`/productDetails/cart/${product?._id}`}>
           <button className="linkbtn" onClick={setData}>Add To Cart</button>
           </Link>
           <Link id="linkbutton" to={`/shipping`}>

@@ -3,9 +3,9 @@ import axios from 'axios';
 import "../styles/mobile.css"
 import { Link } from "react-router-dom"
 
-export const Mobile = () => {
+export const Product = () => {
 
-    const [Mobile, setProduct] = useState([]);
+    const [Product, setProduct] = useState([]);
     useEffect(() => {
         setData()
     }, [])
@@ -13,15 +13,15 @@ export const Mobile = () => {
     const setData = () => {
         axios.get("https://morning-scrubland-78864.herokuapp.com/all").then((res) => {
             setProduct(res.data);
-            console.log(res.data);
+            //console.log(res.data);
         });
     };
     return (
         <div className="collectionData">
 
-            {Mobile.map((e) => (
+            {Product.map((e) => (
                 <div className="categoryDiv">
-                <Link to={`/MobileDetail/${e._id}`}>
+                <Link to={`/product/${e._id}`}>
                 <img src={e.imgUrl} />
                 </Link>
                 <p className="titleP">{e.title}</p>
